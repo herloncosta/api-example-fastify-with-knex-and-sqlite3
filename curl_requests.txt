@@ -1,0 +1,26 @@
+GET: curl http://localhost:3000/api/users
+POST: curl -X POST http://localhost:3000/api/users 
+           -H "Content-Type: application/json" 
+           -d '{"name": "John Doe", "email": "john@example.com"}'
+PUT: curl -X PUT http://localhost:3000/api/users/1
+          -H "Content-Type: application/json"
+          -d '{"name": "Jane Doe", "email": "jane@example.com"}'
+DELETE: curl -X DELETE http://localhost:3000/api/users/1
+
+-X (define o método HTTP utilizado)
+-H (define o conteúdo do header)
+-d (define os dados que são passados da requisição)
+-o (define um arquivo de saída para o retorno da requisição)
+-i (inclui os dados do header no arquivo de saída)
+
+REQUISIÇÃO GET COM GERAÇÃO DE ARQUIVO E INCLUSÃO DOS DADOS DO HEADER
+-> curl http://localhost:3000/api/users -o output.json -i
+
+HTTP/1.1 200 OK
+content-type: application/json; charset=utf-8
+content-length: 91
+Date: Sat, 16 Mar 2024 12:55:15 GMT
+Connection: keep-alive
+Keep-Alive: timeout=72
+
+[{"id":1,"firstName":"John","lastName":"Doe"},{"id":2,"firstName":"Jane","lastName":"Doe"}]
